@@ -13,6 +13,7 @@ root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
     <Loginform Contentdark={dark} />
+    {/* <App /> */}
       <GlobalStyle Contentdark={dark} />
     </ThemeProvider>
   </React.StrictMode>

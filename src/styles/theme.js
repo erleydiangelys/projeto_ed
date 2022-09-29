@@ -2,14 +2,17 @@ export const theme = {
   colors: {
     white: '#fff',
     primaryColor: '#333',
-    secondaryColor: '#dc143c',
+    secondaryColor: '#00C06B',
+    secondaryColorHover: '#05DF7F',
     lightBg: '#fff',
     darkBg: '#333',
+    errorColor: '#FF5533'
   },
   font: {
     family: {
       default: "'Open Sans', sans-serif",
       secundary: "'Montserrat', sans-serif",
+      titulo: "Changa, 'Montserrat'",
     },
     sizes: {
       small: '0.8rem',

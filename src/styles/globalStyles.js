@@ -17,8 +17,8 @@ ${({ theme, Contentdark }) => css`
     font-size: 2.4rem;
     font-family: ${({ theme }) => theme.font.family.default};
     background: ${
-      Contentdark ? theme.colors.white : theme.colors.primaryColor
-    };;
+      Contentdark ? theme.colors.primaryColor : theme.colors.white
+    };
   }
 
   h1, h2, h3, h4, h5, h6{
