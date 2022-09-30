@@ -38,7 +38,7 @@ export const UserAuth = ({ children }) => {
       }
     }
     autoLogin();
-  }, [login]);
+  }, []);
 
 
   const CreateUser = async (email, password) => {
@@ -47,6 +47,12 @@ export const UserAuth = ({ children }) => {
       await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
           const NewUser = userCredential.user;
+          const User = {
+            userId: NewUser.uid,
+            email: NewUser.email,
+            token: NewUser.accessToken,
+        }
+        window.localStorage.setItem('user', JSON.stringify(User))
           setUser(NewUser)
           setLogin(true)
           setLoading(false)
