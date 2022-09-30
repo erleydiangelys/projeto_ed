@@ -1,20 +1,20 @@
 import React from 'react';
 import {useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { UserContext } from './database/firebase/UserAuth';
+// import { UploadImg, getImg } from './database/firebase/AuthUser'
+// import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 const Validation = yup.object().shape({
-  title: yup.string().required(),
-  description: yup.string().required(),
-  content: yup.string().required()
 })
 
 function App() {
-  const { register, handleSubmit, formState:{errors}} = useForm({
-    resolver: yupResolver(Validation)
-  });
+  const { imgURL, progressPorcent, getImg, UploadImg, ValidUser, imgName } = React.useContext(UserContext);
+  const { register, handleSubmit, formState:{errors}} = useForm();
 
-  const addPost = data => console.log(data);
+  const addPost = async (e) => {
+    await UploadImg(e)
+  }
 
 
   return (
@@ -23,24 +23,19 @@ function App() {
       <form onSubmit={handleSubmit(addPost)}>
         <div>
           <label>titulo</label>
-          <input type='text' name='title' {...register('title')} />
-          <p>{errors.title?.message}</p>
+          <input type='file' name='img' {...register('img')} />
+          {/* <p>{errors.title?.message}</p> */}
         </div>
 
-        <div>
-          <label>descrição</label>
-          <input type='text' name='description' {...register('description')} />
-          <p>{errors.description?.message}</p>
-        </div>
-
-        <div>
-          <label>conteudo</label>
-          <textarea type='text' name='content' {...register('content')}></textarea>
-          <p>{errors.content?.message}</p>
-        </div>
+        {!imgURL && <p>{progressPorcent}%</p>}
+        {imgURL && <img src={imgURL} alt="Imagem" height={200} />}
+        {imgURL && <p>{imgName}</p>}
 
         <div>
           <button type='submit' >enviar</button>
+
+          <button onClick={()=> console.log(getImg('images/cururu.jpg'))} >enviar</button>
+          <button onClick={()=> console.log(ValidUser())} >enviar</button>
         </div>
 
       </form>

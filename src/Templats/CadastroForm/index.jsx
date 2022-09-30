@@ -17,12 +17,12 @@ import { Container, ContainerContent, ContentText, Name, Img,
 
 const Validation = yup.object().shape({
   username: yup.string().required("o usuario é obrigatorio").email('insira um email valido'),
-  password: yup.string().required('a senha é obrigatoria'),
+  password: yup.string().required('a senha é obrigatoria').min(6, 'senha precisa ter mais de 6 caracteres'),
 })
 
-function LoginForm({Contentdark}) {
+function CadastroForm({Contentdark}) {
   const menor = useMedia('(max-width: 769px)');
-  const {error, loading, LoginUser, LoginGoogle } = React.useContext(UserContext);
+  const {error, loading, LoginUser, CreateUser } = React.useContext(UserContext);
   const { register, handleSubmit, formState:{errors}} = useForm({
     resolver: yupResolver(Validation)
   });
@@ -39,7 +39,7 @@ function LoginForm({Contentdark}) {
   const handleLogin = async (e) => {
     const username = e.username
     const password = e.password
-    await LoginUser(username, password)
+    await CreateUser(username, password)
   }
 
   return (
@@ -49,7 +49,7 @@ function LoginForm({Contentdark}) {
       <ContentText>
         <Name>ZÉ DO BICO</Name>
 
-          <Img>
+          {/* <Img>
           {menor ? (
             <Lottie options={defaultOptions}
                 height={300}
@@ -60,11 +60,12 @@ function LoginForm({Contentdark}) {
                 width={380} />
                 )
           }
-          </Img>
+          </Img> */}
+
       </ContentText>
       <FormContant>
-        <ContentTitle Contentdark={Contentdark} >Faça login e vamos ao trabalho!</ContentTitle>
-        <ContentDescription Contentdark={Contentdark} >encontre o quebra galho ou aquele serviço que está procurando...</ContentDescription>
+        <ContentTitle Contentdark={Contentdark} >Seja bem vindo!</ContentTitle>
+        <ContentDescription Contentdark={Contentdark} >Preencha os campos e vamos ao trabalho...</ContentDescription>
       <Form onSubmit={handleSubmit(handleLogin)} Contentdark={Contentdark}>
         <ItemForm>
           {/* <Label Contentdark={Contentdark} >username</Label> */}
@@ -79,21 +80,13 @@ function LoginForm({Contentdark}) {
         </ItemForm>
 
         <ItemForm>
-          <Button type='submit' >{loading ? <Loading>.:</Loading> : 'Entrar'} </Button>
+          <Button type='submit' >{loading ? <Loading>.:</Loading> : 'Cadastrar'} </Button>
         </ItemForm>
 
       </Form>
 
       {error &&<Erro><p>{error}</p></Erro>}
 
-      <ItemForm>
-          <ButtonGoogle >
-            <BGoogle onClick={() => LoginGoogle()}/>
-            <p>LOGIN VIA GOOGLE</p>
-          </ButtonGoogle>
-      </ItemForm>
-
-      <LinkCadastro Contentdark={Contentdark}>Não tem uma conta? <Link to={'/cadastro'}>Cadastre-se</Link></LinkCadastro>
       </FormContant>
       </ContainerContent>
 
@@ -101,4 +94,4 @@ function LoginForm({Contentdark}) {
   );
 }
 
-export default LoginForm;
+export default CadastroForm;
