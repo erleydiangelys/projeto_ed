@@ -25,7 +25,7 @@ color: ${Contentdark ? theme.colors.white : theme.colors.primaryColor};
   margin: 0 auto;
   max-width: 1000px;
   height: 4rem;
-  padding: 0 1.5rem;
+  padding: 0 2rem;
   font-size: 1.8rem;
 
 `;
@@ -41,6 +41,48 @@ ${({ theme, Contentdark }) => css`
 `};
 `;
 
+
 export const MenuContent = styled.div`
-  font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-direction: row;
+  `;
+
+const menuCss = css`
+  display: flex;
+  flex-direction: row;
+  font-size: 1.5rem;
+  gap: 2rem;
+
+  & > div {
+    display: grid;
+    grid-template-columns: 1fr 30px;
+    align-items: center;
+    align-content: center;
+
+    & > svg {
+      max-width: 15px;
+      margin-left: 5px;
+      margin-top: 2.5px;
+    }
+  }
 `;
+
+export const MenuMobile = styled.div`
+  ${menuCss}
+  & > div {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    font-size: 0.8rem;
+    & > svg {
+      max-width: 20px;
+      margin-left: 0px;
+    }
+  }
+`;
+
+export const Menu = styled.div`
+  ${menuCss}
+`;
+

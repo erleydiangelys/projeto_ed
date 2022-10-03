@@ -3,9 +3,10 @@ import { UserContext } from '../../database/firebase/UserAuth';
 import useMedia from '../../Hooks/useMedia';
 import { Link } from "react-router-dom";
 import { LogoutCircleR } from '@styled-icons/remix-line/LogoutCircleR'
+import { UserCircle } from '@styled-icons/boxicons-regular/UserCircle'
 
 
-import { Container, Content, Logo, MenuContent } from './styles'
+import { Container, Content, Logo, MenuContent, MenuMobile, Menu, MenuItem } from './styles'
 
 function Header({Contentdark}){
   const { error, loading, LogoutUser, login  } = React.useContext(UserContext);
@@ -20,10 +21,20 @@ function Header({Contentdark}){
 
       </Logo >
       <MenuContent>
-        {menor ? (
-          <div onClick={() => LogoutUser()}>menor </div>
+      {menor ? (
+        <MenuMobile>
+            <div><UserCircle />Meus Trampos</div>
+            <div><UserCircle />Meus Serviços </div>
+            <div><UserCircle />perfil </div>
+            <div onClick={() => LogoutUser()}><LogoutCircleR/> sair</div>
+        </MenuMobile>
         ) : (
-          <div onClick={() => LogoutUser()}>sair </div>
+        <Menu>
+          <div>Meus Trampos<UserCircle /></div>
+          <div>Meus Serviços <UserCircle /></div>
+           <div>perfil <UserCircle /></div>
+          <div onClick={() => LogoutUser()}>sair <LogoutCircleR/> </div>
+        </Menu>
         )}
       </MenuContent>
       </Content>

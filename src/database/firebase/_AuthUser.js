@@ -1,7 +1,7 @@
 // import React from 'react';
 import React from "react";
 import { auth, storage } from "./firebase-config";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytesResumable, signInWithRedirect,  getDownloadURL } from "firebase/storage";
 import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
@@ -45,7 +45,7 @@ export const LoginUser = async (email, password) => {
 
   const provider = new GoogleAuthProvider();
 
-  signInWithPopup(auth, provider)
+  signInWithRedirect(auth, provider)
     .then((result) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;

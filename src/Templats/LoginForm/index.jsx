@@ -23,7 +23,7 @@ const Validation = yup.object().shape({
 function LoginForm({Contentdark}) {
   const menor = useMedia('(max-width: 769px)');
 
-  const {error, loading, LoginUser, LoginGoogle } = React.useContext(UserContext);
+  const {error, loading, LoginUser, LoginGoogleDesktop, LoginGoogleMb } = React.useContext(UserContext);
 
   const { register, handleSubmit, formState:{errors}} = useForm({
     resolver: yupResolver(Validation)
@@ -90,7 +90,11 @@ function LoginForm({Contentdark}) {
 
       <ItemForm>
           <ButtonGoogle >
-            <BGoogle onClick={() => LoginGoogle()}/>
+            {menor ? (
+              <BGoogle onClick={() => LoginGoogleMb()}/>
+            ) : (
+            <BGoogle onClick={() => LoginGoogleDesktop()}/>
+            )}
             <p>ACESSO VIA GOOGLE</p>
           </ButtonGoogle>
       </ItemForm>

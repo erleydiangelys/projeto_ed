@@ -9,6 +9,8 @@ import {
   signOut,
   signInWithPopup,
   GoogleAuthProvider,
+  signInWithRedirect,
+  onAuthStateChanged
 } from "firebase/auth";
 
 export const UserContext = React.createContext();
@@ -37,6 +39,22 @@ export const UserAuth = ({ children }) => {
         LoginUser();
       }
     }
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if(unsubscribe) {
+        const User = {
+          userId: currentUser.uid,
+          email: currentUser.email,
+          token: currentUser.accessToken,
+      }
+      console.log(user);
+      window.localStorage.setItem('user', JSON.stringify(User))
+      setUser(User)
+      setLogin(true)
+      navigate('/');
+      }
+      setUser(currentUser);
+      console.log('User', currentUser)
+    });
     autoLogin();
   }, []);
 
@@ -97,7 +115,7 @@ export const UserAuth = ({ children }) => {
 
 
 
-  const LoginGoogle = async () => {
+  const LoginGoogleDesktop = async () => {
 
     const provider = new GoogleAuthProvider();
 
@@ -123,6 +141,19 @@ export const UserAuth = ({ children }) => {
         setLogin(false)
       });
     }
+
+
+  const LoginGoogleMb = async () => {
+
+    const provider = new GoogleAuthProvider();
+
+     signInWithRedirect(auth, provider).then((result) => {
+    })
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      console.log('User', currentUser)
+    });
+  }
 
 
     const LogoutUser = async () => {
@@ -222,7 +253,8 @@ export const UserAuth = ({ children }) => {
         UploadImg,
         CreateUser,
         LoginUser,
-        LoginGoogle,
+        LoginGoogleDesktop,
+        LoginGoogleMb,
         LogoutUser,
         AutoLogin,
         ValidUser,
