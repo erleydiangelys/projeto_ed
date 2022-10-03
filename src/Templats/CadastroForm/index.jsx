@@ -4,15 +4,13 @@ import { UserContext } from '../../database/firebase/UserAuth';
 import {useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import Lottie from 'react-lottie';
 
 import useMedia from '../../Hooks/useMedia';
-import { ReactComponent as BGoogle } from '../../Assets/bGoogle.svg';
 import * as animationData from '../../Assets/json/animation.json'
 
-import { Container, ContainerContent, ContentText, Name, Img,
+import { Container, ContainerContent, ContentText, Name,
          FormContant, Form, ItemForm, Input, Erro, Button,
-          ButtonGoogle, ContentTitle, ContentDescription, Loading, LinkCadastro } from './styles';
+          ContentTitle, ContentDescription, Loading } from './styles';
 
 
 const Validation = yup.object().shape({

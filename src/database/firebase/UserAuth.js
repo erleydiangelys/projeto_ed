@@ -16,7 +16,7 @@ export const UserContext = React.createContext();
 
 export const UserAuth = ({ children }) => {
   const [imgURL, setImgURL] = useState("");
-  const [login, setLogin] = useState(null);
+  const [login, setLogin] = useState(Boolean(window.localStorage.getItem('user')));
   const [user, setUser] = useState([]);
   const [imgName, setImgimgName] = useState("");
   const [error, setError] = useState(null);
@@ -130,6 +130,7 @@ export const UserAuth = ({ children }) => {
           window.localStorage.removeItem('user')
           console.log('saiu');
           setUser(null)
+          setLogin(false)
           navigate('/login');
           }).catch(e => {
               console.log(e);

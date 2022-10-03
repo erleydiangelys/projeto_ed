@@ -7,11 +7,8 @@ import { UserAuth } from './database/firebase/UserAuth';
 import { GlobalStyle } from './styles/globalStyles';
 import { theme } from './styles/theme';
 
-import App from './app';
-import Loginform from './Templats/LoginForm';
-import ProtectedRoute from './Components/Helper/ProtectedRoute';
-import PageNotFound from './Templats/NotFound';
 import { Router } from './routes';
+import Header from './Components/Header/index';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -21,6 +18,7 @@ root.render(
      <BrowserRouter>
       <UserAuth>
         <ThemeProvider theme={theme}>
+        <Header Contentdark={dark}/>
             <Router Contentdark={dark}/>
           <GlobalStyle Contentdark={dark} />
         </ThemeProvider>
