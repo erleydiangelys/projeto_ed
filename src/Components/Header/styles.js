@@ -1,10 +1,13 @@
 import styled, { css, keyframes } from 'styled-components';
 
 export const Container = styled.div`
-  position: sticky;
+${({ theme, Contentdark, menor }) => css`
+  top: ${menor ? 'none' : '0px'};
+  bottom: ${menor ? '0px' : 'none'};
+`};
+  position: fixed;
   width: 100%;
   z-index: 100;
-  top: 0px;
   height: 4rem;
   margin-bottom: 1rem;
   & > h1 {
@@ -13,7 +16,7 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.nav`
-${({ theme, Contentdark }) => css`
+${({ theme, Contentdark, menor }) => css`
 color: ${Contentdark ? theme.colors.white : theme.colors.primaryColor};
 `};
   display: flex;

@@ -12,7 +12,7 @@ function Header({Contentdark}){
   const menor = useMedia('(max-width: 769px)');
 
   return (
-    <Container>
+    <Container menor={menor}>
      {login &&
      <Content Contentdark={Contentdark}>
       <Logo Contentdark={Contentdark}>
@@ -20,7 +20,11 @@ function Header({Contentdark}){
 
       </Logo >
       <MenuContent>
-       <div onClick={() => LogoutUser()}>sair </div>
+        {menor ? (
+          <div onClick={() => LogoutUser()}>menor </div>
+        ) : (
+          <div onClick={() => LogoutUser()}>sair </div>
+        )}
       </MenuContent>
       </Content>
       }
