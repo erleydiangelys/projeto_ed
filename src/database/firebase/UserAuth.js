@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { auth, storage } from "./firebase-config";
+import { auth, storage, db } from "./firebase-config";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import {
   createUserWithEmailAndPassword,
@@ -10,7 +10,8 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   signInWithRedirect,
-  onAuthStateChanged
+  onAuthStateChanged,
+  getRedirectResult
 } from "firebase/auth";
 
 export const UserContext = React.createContext();
@@ -34,7 +35,6 @@ export const UserAuth = ({ children }) => {
       const token = JSON.parse(window.localStorage.getItem('user'));
       if(token){
         setLogin(true)
-        // navigate('/');
       } else {
         LoginUser();
       }
@@ -46,14 +46,19 @@ export const UserAuth = ({ children }) => {
           email: currentUser.email,
           token: currentUser.accessToken,
       }
-      console.log(user);
       window.localStorage.setItem('user', JSON.stringify(User))
       setUser(User)
       setLogin(true)
       navigate('/');
       }
+      //  else {
+      //   getRedirectResult().then(result => {
+      //     if (result.user || db.auth().currentUser) {
+      //       console.log('result.user', result)
+      //     }
+      //   });
+      //  }
       setUser(currentUser);
-      console.log('User', currentUser)
     });
     autoLogin();
   }, []);
@@ -146,12 +151,13 @@ export const UserAuth = ({ children }) => {
   const LoginGoogleMb = async () => {
 
     const provider = new GoogleAuthProvider();
-
+    provider.setCustomParameters({
+      prompt: 'select_account',
+    });
      signInWithRedirect(auth, provider).then((result) => {
     })
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log('User', currentUser)
     });
   }
 

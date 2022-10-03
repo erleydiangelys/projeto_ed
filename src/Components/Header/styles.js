@@ -62,7 +62,7 @@ const menuCss = css`
     align-content: center;
 
     & > svg {
-      max-width: 15px;
+      width: 20px;
       margin-left: 5px;
       margin-top: 2.5px;
     }
@@ -72,13 +72,13 @@ const menuCss = css`
 export const MenuMobile = styled.div`
   ${menuCss}
   & > div {
+    ${({ theme, Contentdark, menor }) => css`
+    margin-left: ${menor ? '2rem' : '0px'};
+`};
+
     grid-template-columns: 1fr;
     justify-items: center;
     font-size: 0.8rem;
-    & > svg {
-      max-width: 20px;
-      margin-left: 0px;
-    }
   }
 `;
 

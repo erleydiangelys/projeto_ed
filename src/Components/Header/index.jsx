@@ -2,8 +2,10 @@ import React from 'react'
 import { UserContext } from '../../database/firebase/UserAuth';
 import useMedia from '../../Hooks/useMedia';
 import { Link } from "react-router-dom";
-import { LogoutCircleR } from '@styled-icons/remix-line/LogoutCircleR'
+import { LogoutCircle } from '@styled-icons/remix-line/LogoutCircle'
 import { UserCircle } from '@styled-icons/boxicons-regular/UserCircle'
+import { PaintRoll } from '@styled-icons/boxicons-regular/PaintRoll'
+import { HappyBeaming } from '@styled-icons/boxicons-regular/HappyBeaming'
 
 
 import { Container, Content, Logo, MenuContent, MenuMobile, Menu, MenuItem } from './styles'
@@ -22,18 +24,18 @@ function Header({Contentdark}){
       </Logo >
       <MenuContent>
       {menor ? (
-        <MenuMobile>
-            <div><UserCircle />Meus Trampos</div>
-            <div><UserCircle />Meus Serviços </div>
+        <MenuMobile menor={menor}>
+            <div><HappyBeaming />Meus Trampos</div>
+            <div><PaintRoll />Meus Serviços </div>
             <div><UserCircle />perfil </div>
-            <div onClick={() => LogoutUser()}><LogoutCircleR/> sair</div>
+            <div onClick={() => LogoutUser()}><LogoutCircle/> sair</div>
         </MenuMobile>
         ) : (
         <Menu>
-          <div>Meus Trampos<UserCircle /></div>
-          <div>Meus Serviços <UserCircle /></div>
+          <div>Meus Trampos<HappyBeaming /></div>
+          <div>Meus Serviços <PaintRoll /></div>
            <div>perfil <UserCircle /></div>
-          <div onClick={() => LogoutUser()}>sair <LogoutCircleR/> </div>
+          <div onClick={() => LogoutUser()}>sair <LogoutCircle/> </div>
         </Menu>
         )}
       </MenuContent>
