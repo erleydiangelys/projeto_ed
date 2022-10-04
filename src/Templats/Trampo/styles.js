@@ -62,6 +62,25 @@ ${({ theme }) => css`
 
 `;
 
+export const ListTrampo = styled.div`
+${({ theme, Contentdark }) => css`
+  /* background ${Contentdark ? theme.colors.grayMid : theme.colors.grayDark}; */
+  `};
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ListCard = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2px;
+  margin: 1rem;
+
+
+  @media(min-width: 650px){
+    grid-template-columns: 1fr 1fr;
+  }
+`;
 
 
 

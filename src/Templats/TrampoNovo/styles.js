@@ -73,7 +73,7 @@ ${({ theme }) => css`
   `};
   text-align: center;
   margin-bottom: 1.5rem;
-  font-size: 3rem;
+  font-size: 4rem;
 
   &::after {
     content: ' ⚒️';

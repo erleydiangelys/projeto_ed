@@ -6,7 +6,9 @@ export const theme = {
     secondaryColorHover: '#05DF7F',
     lightBg: '#fff',
     darkBg: '#333',
-    errorColor: '#FF5533'
+    errorColor: '#FF5533',
+    grayDark: '#494848',
+    grayMid: '#c0bebe',
   },
   font: {
     family: {
