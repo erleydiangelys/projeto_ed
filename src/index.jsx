@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import { UserAuth } from './database/firebase/UserAuth';
+import { UserData } from './database/firebase/UserData';
+
 import { GlobalStyle } from './styles/globalStyles';
 import { theme } from './styles/theme';
 
@@ -17,11 +19,13 @@ root.render(
   <React.StrictMode>
      <BrowserRouter>
       <UserAuth>
+        <UserData>
         <ThemeProvider theme={theme}>
         <Header Contentdark={dark}/>
             <Router Contentdark={dark}/>
           <GlobalStyle Contentdark={dark} />
         </ThemeProvider>
+        </UserData>
       </UserAuth>
      </BrowserRouter>
   </React.StrictMode>

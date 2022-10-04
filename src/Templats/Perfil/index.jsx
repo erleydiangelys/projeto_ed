@@ -2,13 +2,15 @@ import React from 'react';
 
 import useMedia from '../../Hooks/useMedia';
 import { UserContext } from '../../database/firebase/UserAuth';
+import perfilPhoto from '../../Assets/png/perfil.png';
 
-import { Container, ContainerContent, ContentText, Name} from './styles';
+
+import { Container, ContainerContent, ContentPerfil, Name, Img, Skeleton} from './styles';
 
 
 
 function Perfil({Contentdark}) {
-  const {error, loading, LogoutUser  } = React.useContext(UserContext);
+  const { error, loading, user  } = React.useContext(UserContext);
 
   const menor = useMedia('(max-width: 769px)');
 
@@ -17,10 +19,14 @@ function Perfil({Contentdark}) {
 
     <Container>
       <ContainerContent Contentdark={Contentdark}>
-      <ContentText>
-        <Name>Aqui será o Perfil</Name>
+      <ContentPerfil>
+        {console.log(user)}
+        <Name>{user.displayName ? (user.displayName) : (user.email) }</Name>
+        <Img src={user.photoURL ? (user.photoURL) : (perfilPhoto)} alt='Photo perfil' />
 
-      </ContentText>
+        {/* <button onClick={() => criarUsuario(user)}>Teste</button> */}
+      </ContentPerfil>
+
 
       </ContainerContent>
 

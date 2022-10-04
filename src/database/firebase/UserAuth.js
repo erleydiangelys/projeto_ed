@@ -11,8 +11,9 @@ import {
   GoogleAuthProvider,
   signInWithRedirect,
   onAuthStateChanged,
-  getRedirectResult
 } from "firebase/auth";
+
+
 
 export const UserContext = React.createContext();
 
@@ -21,11 +22,13 @@ export const UserAuth = ({ children }) => {
   const [imgURL, setImgURL] = useState("");
   const [login, setLogin] = useState(Boolean(window.localStorage.getItem('user')));
   const [user, setUser] = useState([]);
+  const [usuario, setUsuario] = useState([]);
   const [imgName, setImgimgName] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [progressPorcent, setPorgessPorcent] = useState(0);
   const navigate = useNavigate();
+
 
   const storageRef  = ref(storage, 'userImg');
 
@@ -33,7 +36,7 @@ export const UserAuth = ({ children }) => {
   React.useEffect(() => {
     function autoLogin() {
       const token = JSON.parse(window.localStorage.getItem('user'));
-      console.log(login)
+      // console.log(login)
       if(token){
         setLogin(true)
       } else {
@@ -43,6 +46,7 @@ export const UserAuth = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if(unsubscribe) {
         const User = {
+          uid: currentUser.uid,
           userId: currentUser.uid,
           email: currentUser.email,
           token: currentUser.accessToken,
@@ -51,19 +55,10 @@ export const UserAuth = ({ children }) => {
       setUser(User)
       setLogin(true)
       }
-      //  else {
-      //   getRedirectResult().then(result => {
-      //     if (result.user || db.auth().currentUser) {
-      //       console.log('result.user', result)
-      //     }
-      //   });
-      //  }
       setUser(currentUser);
-      // console.log('User', currentUser)
     });
     autoLogin();
   }, []);
-
 
   const CreateUser = async (email, password) => {
     if(email) {
@@ -71,12 +66,7 @@ export const UserAuth = ({ children }) => {
       await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
           const NewUser = userCredential.user;
-          const User = {
-            userId: NewUser.uid,
-            email: NewUser.email,
-            token: NewUser.accessToken,
-        }
-        window.localStorage.setItem('user', JSON.stringify(User))
+        window.localStorage.setItem('user', JSON.stringify(NewUser))
           setUser(NewUser)
           setLogin(true)
           setLoading(false)
@@ -99,17 +89,17 @@ export const UserAuth = ({ children }) => {
       await signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
           const data =  userCredential.user
-          const User = {
-              userId: data.uid,
-              email: data.email,
-              token: data.accessToken,
-          }
-          window.localStorage.setItem('user', JSON.stringify(User))
-          setUser(User)
+          // const User = {
+          //     userId: data.uid,
+          //     email: data.email,
+          //     token: data.accessToken,
+          // }
+          window.localStorage.setItem('user', JSON.stringify(data))
+          setUser(data)
           setLogin(true)
           setLoading(false)
           navigate('/');
-          return User;
+          return data;
       }).catch(e => {
         setError('erro ao realizar login tente novamente')
           console.log(e);
@@ -130,13 +120,14 @@ export const UserAuth = ({ children }) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         const data = result.user;
-        const User = {
-            userId: data.uid,
-            email: data.email,
-            token: data.accessToken,
-        }
-        window.localStorage.setItem('user', JSON.stringify(User))
-        setUser(User)
+        // const User = {
+        //     userId: data.uid,
+        //     email: data.email,
+        //     token: data.accessToken,
+        //     token
+        // }
+        window.localStorage.setItem('user', JSON.stringify(data))
+        setUser(data)
         setLogin(true)
         navigate('/');
       }).catch((error) => {
@@ -253,7 +244,6 @@ export const UserAuth = ({ children }) => {
 
 
 
-
   return (
     <UserContext.Provider
       value={{
@@ -268,6 +258,8 @@ export const UserAuth = ({ children }) => {
         UploadImg,
         getImg,
         setError,
+        setUsuario,
+        usuario,
         error,
         user,
         login,

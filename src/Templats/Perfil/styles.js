@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 
 
@@ -24,7 +24,7 @@ background: ${Contentdark ? theme.colors.primaryColor : theme.colors.white};
 
   `;
 
-  export const ContentText = styled.div`
+export const ContentPerfil = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -32,23 +32,13 @@ background: ${Contentdark ? theme.colors.primaryColor : theme.colors.white};
     align-items: center;
   `;
 
-
-
-export const ContentTitle = styled.h3`
-${({ theme, Contentdark }) => css`
-  color: ${theme.colors.secondaryColor};
-  `};
-  text-align: center;
-  margin-bottom: 1.5rem;
+export const Img = styled.img`
+  width: 4rem;
+  width: 150px;
+  width: 150px;
+  border-radius: 50px;
 `;
 
-export const ContentDescription = styled.h6`
-${({ theme, Contentdark }) => css`
-${Contentdark ? theme.colors.primaryColor : theme.colors.white};
-  `};
-  text-align: center;
-  margin-bottom: 2rem;
-`;
 
 export const Name = styled.h1`
 ${({ theme }) => css`
@@ -58,7 +48,7 @@ ${({ theme }) => css`
   text-align: center;
   margin-bottom: 1.5rem;
   margin-top: 6rem;
-  font-size: 4rem;
+  font-size: 2.5rem;
 
 `;
 

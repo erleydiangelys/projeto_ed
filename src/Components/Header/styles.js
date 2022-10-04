@@ -8,7 +8,7 @@ ${({ theme, Contentdark, menor }) => css`
   position: fixed;
   width: 100%;
   z-index: 100;
-  height: 4rem;
+  height: 5rem;
   margin-bottom: 1rem;
   & > h1 {
     font-size: 2rem;
@@ -24,7 +24,7 @@ color: ${Contentdark ? theme.colors.white : theme.colors.primaryColor};
   align-items: center;
   margin: 0 auto;
   max-width: 1000px;
-  height: 4rem;
+  height: 5rem;
   padding: 0 2rem;
   font-size: 1.8rem;
 
@@ -100,9 +100,25 @@ export const MenuMobile = styled.div`
     ${({ theme, Contentdark, menor }) => css`
     margin-left: ${menor ? '2rem' : '0px'};
 `};
-& > div:first-child {
-  margin-left: 0px;
-}
+  & > div:first-child {
+    margin-left: 0px;
+  }
+  & > a {
+      display: grid;
+      grid-template-columns: 1fr;
+      text-decoration: none;
+      align-items: center;
+      align-content: center;
+      cursor: pointer;
+      color: currentColor;
+
+      & > svg {
+      width: 20px;
+      margin-left: 5px;
+      margin-top: 2.5px;
+      }
+
+    }
 
     grid-template-columns: 1fr;
     justify-items: center;
@@ -115,7 +131,7 @@ export const Menu = styled.div`
 `;
 
 export const Line = styled.div`
-width: 100vh;
+width: 100%;
 height: 1px;
 ${({ theme, Contentdark}) => css`
 background: ${Contentdark ? '#504948' : '#F0E5E3'};

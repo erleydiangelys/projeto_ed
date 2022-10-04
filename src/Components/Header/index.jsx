@@ -26,8 +26,8 @@ function Header({Contentdark}){
       <MenuContent>
       {menor ? (
         <MenuMobile menor={menor}>
-            <div><HappyBeaming />Trampos</div>
-            <div><PaintRoll />Serviços </div>
+            <div><Link to="/trampos"><HappyBeaming />Trampos</Link></div>
+            <div><Link to="/servicos"><PaintRoll />Serviços</Link></div>
             <div><Link to="/perfil"><UserCircle />perfil</Link></div>
             <div onClick={() => LogoutUser()}><LogoutCircle/> sair</div>
         </MenuMobile>
