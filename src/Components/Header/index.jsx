@@ -8,7 +8,7 @@ import { PaintRoll } from '@styled-icons/boxicons-regular/PaintRoll'
 import { HappyBeaming } from '@styled-icons/boxicons-regular/HappyBeaming'
 
 
-import { Container, Content, Logo, MenuContent, MenuMobile, Menu, MenuItem } from './styles'
+import { Container, Content, Logo, MenuContent, MenuMobile, Menu, Line } from './styles'
 
 function Header({Contentdark}){
   const { error, loading, LogoutUser, login  } = React.useContext(UserContext);
@@ -16,6 +16,7 @@ function Header({Contentdark}){
 
   return (
     <Container menor={menor}>
+    {login && <Line Contentdark={Contentdark} />}
      {login &&
      <Content Contentdark={Contentdark}>
       <Logo Contentdark={Contentdark}>
@@ -25,22 +26,23 @@ function Header({Contentdark}){
       <MenuContent>
       {menor ? (
         <MenuMobile menor={menor}>
-            <div><HappyBeaming />Meus Trampos</div>
-            <div><PaintRoll />Meus Serviços </div>
-            <div><UserCircle />perfil </div>
+            <div><HappyBeaming />Trampos</div>
+            <div><PaintRoll />Serviços </div>
+            <div><Link to="/perfil"><UserCircle />perfil</Link></div>
             <div onClick={() => LogoutUser()}><LogoutCircle/> sair</div>
         </MenuMobile>
         ) : (
         <Menu>
-          <div>Meus Trampos<HappyBeaming /></div>
-          <div>Meus Serviços <PaintRoll /></div>
-           <div>perfil <UserCircle /></div>
+          <div><Link to="/trampos">Meus Trampos<HappyBeaming /></Link></div>
+          <div><Link to="/servicos">Meus Serviços <PaintRoll /></Link></div>
+          <div><Link to="/perfil">perfil <UserCircle /></Link></div>
           <div onClick={() => LogoutUser()}>sair <LogoutCircle/> </div>
         </Menu>
         )}
       </MenuContent>
       </Content>
       }
+      {login && <Line Contentdark={Contentdark} />}
     </Container>
   )
 }

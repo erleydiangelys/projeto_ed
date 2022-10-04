@@ -7,7 +7,7 @@ import { Container, ContainerContent, ContentText, Name, Img,} from './styles';
 
 
 
-function Home({Contentdark}) {
+function Trampo({Contentdark}) {
   const {error, loading, LogoutUser  } = React.useContext(UserContext);
 
   const menor = useMedia('(max-width: 769px)');
@@ -18,7 +18,7 @@ function Home({Contentdark}) {
     <Container>
       <ContainerContent Contentdark={Contentdark}>
       <ContentText>
-        <Name>Aqui será a home</Name>
+        <Name>Aqui será a Trampos</Name>
 
       </ContentText>
 
@@ -28,4 +28,4 @@ function Home({Contentdark}) {
   );
 }
 
-export default Home;
+export default Trampo;

@@ -33,6 +33,7 @@ export const UserAuth = ({ children }) => {
   React.useEffect(() => {
     function autoLogin() {
       const token = JSON.parse(window.localStorage.getItem('user'));
+      console.log(login)
       if(token){
         setLogin(true)
       } else {
@@ -49,7 +50,6 @@ export const UserAuth = ({ children }) => {
       window.localStorage.setItem('user', JSON.stringify(User))
       setUser(User)
       setLogin(true)
-      navigate('/');
       }
       //  else {
       //   getRedirectResult().then(result => {
@@ -59,6 +59,7 @@ export const UserAuth = ({ children }) => {
       //   });
       //  }
       setUser(currentUser);
+      // console.log('User', currentUser)
     });
     autoLogin();
   }, []);

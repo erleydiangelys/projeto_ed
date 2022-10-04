@@ -60,6 +60,31 @@ const menuCss = css`
     grid-template-columns: 1fr 30px;
     align-items: center;
     align-content: center;
+    cursor: pointer;
+
+    &:hover {
+      ${({ theme, Contentdark, menor }) => css`
+          color: ${theme.colors.secondaryColor};
+          transform: scale(1.05);
+      `};
+    }
+
+    & > a {
+      display: grid;
+      grid-template-columns: 1fr 30px;
+      text-decoration: none;
+      align-items: center;
+      align-content: center;
+      cursor: pointer;
+      color: currentColor;
+
+      & > svg {
+      width: 20px;
+      margin-left: 5px;
+      margin-top: 2.5px;
+    }
+
+    }
 
     & > svg {
       width: 20px;
@@ -75,6 +100,9 @@ export const MenuMobile = styled.div`
     ${({ theme, Contentdark, menor }) => css`
     margin-left: ${menor ? '2rem' : '0px'};
 `};
+& > div:first-child {
+  margin-left: 0px;
+}
 
     grid-template-columns: 1fr;
     justify-items: center;
@@ -86,3 +114,11 @@ export const Menu = styled.div`
   ${menuCss}
 `;
 
+export const Line = styled.div`
+width: 100vh;
+height: 1px;
+${({ theme, Contentdark}) => css`
+background: ${Contentdark ? '#504948' : '#F0E5E3'};
+margin-bottom: 3px;
+`};
+`;
