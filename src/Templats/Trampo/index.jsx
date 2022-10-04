@@ -40,7 +40,7 @@ function Trampo({Contentdark}) {
     <Container>
       <ContainerContent Contentdark={Contentdark}>
       <ContentText>
-        <Name>Trampos</Name>
+        <Name>Meus Trampos</Name>
         <Link to="/trampos/novo"><Button Contentdark={Contentdark}>+</Button> </Link>
       </ContentText>
 
