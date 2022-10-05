@@ -25,14 +25,14 @@ function CadastroForm({Contentdark}) {
     resolver: yupResolver(Validation)
   });
 
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice'
-    }
-  };
+  // const defaultOptions = {
+  //   loop: true,
+  //   autoplay: true,
+  //   animationData: animationData,
+  //   rendererSettings: {
+  //     preserveAspectRatio: 'xMidYMid slice'
+  //   }
+  // };
 
   const handleLogin = async (e) => {
     const username = e.username
@@ -44,48 +44,35 @@ function CadastroForm({Contentdark}) {
 
     <Container>
       <ContainerContent Contentdark={Contentdark}>
-      <ContentText>
-        <Name>ZÉ DO BICO</Name>
+        <ContentText>
+          <Name>ZÉ DO BICO</Name>
 
-          {/* <Img>
-          {menor ? (
-            <Lottie options={defaultOptions}
-                height={300}
-                width={280} />
-                ) : (
-            <Lottie options={defaultOptions}
-                height={400}
-                width={380} />
-                )
-          }
-          </Img> */}
+        </ContentText>
+        <FormContant>
+          <ContentTitle Contentdark={Contentdark} >Seja bem vindo!</ContentTitle>
+          <ContentDescription Contentdark={Contentdark} >Preencha os campos e vamos ao trabalho...</ContentDescription>
+          <Form onSubmit={handleSubmit(handleLogin)} Contentdark={Contentdark}>
+            <ItemForm>
+              {/* <Label Contentdark={Contentdark} >username</Label> */}
+              <Input Contentdark={Contentdark} placeholder="Insira um email para começar" type='text' name='username' {...register('username')} />
+              <Erro>{errors.username?.message}</Erro>
+            </ItemForm>
 
-      </ContentText>
-      <FormContant>
-        <ContentTitle Contentdark={Contentdark} >Seja bem vindo!</ContentTitle>
-        <ContentDescription Contentdark={Contentdark} >Preencha os campos e vamos ao trabalho...</ContentDescription>
-      <Form onSubmit={handleSubmit(handleLogin)} Contentdark={Contentdark}>
-        <ItemForm>
-          {/* <Label Contentdark={Contentdark} >username</Label> */}
-          <Input Contentdark={Contentdark} placeholder="Insira um email para começar" type='text' name='username' {...register('username')} />
-          <Erro>{errors.username?.message}</Erro>
-        </ItemForm>
+            <ItemForm >
+              {/* <Label Contentdark={Contentdark} >senha</Label> */}
+              <Input Contentdark={Contentdark} placeholder="e sua senha?" type='password' name='password' {...register('password')} />
+              <Erro>{errors.password?.message}</Erro>
+            </ItemForm>
 
-        <ItemForm >
-          {/* <Label Contentdark={Contentdark} >senha</Label> */}
-          <Input Contentdark={Contentdark} placeholder="e sua senha?" type='password' name='password' {...register('password')} />
-          <Erro>{errors.password?.message}</Erro>
-        </ItemForm>
+            <ItemForm>
+              <Button type='submit' >{loading ? <Loading>.:</Loading> : 'Cadastrar'} </Button>
+            </ItemForm>
 
-        <ItemForm>
-          <Button type='submit' >{loading ? <Loading>.:</Loading> : 'Cadastrar'} </Button>
-        </ItemForm>
+          </Form>
 
-      </Form>
+          {error && <Erro><p>{error}</p></Erro>}
 
-      {error &&<Erro><p>{error}</p></Erro>}
-
-      </FormContant>
+        </FormContant>
       </ContainerContent>
 
     </Container>

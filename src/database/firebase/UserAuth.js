@@ -33,8 +33,7 @@ export const UserAuth = ({ children }) => {
 
   const storageRef  = ref(storage, 'userImg');
 
-
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     function autoLogin() {
       const token = JSON.parse(window.localStorage.getItem('user'));
       // console.log(login)

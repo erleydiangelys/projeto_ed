@@ -40,7 +40,7 @@ function Home() {
     <Container>
       <ContainerContent Contentdark={contentdark}>
       <ContentText>
-        <Name>Trampos em abertos!</Name>
+        <Name>Trampos em aberto!</Name>
         {/* <Link to="/trampos/novo"><Button Contentdark={Contentdark}>+</Button> </Link> */}
       </ContentText>
 

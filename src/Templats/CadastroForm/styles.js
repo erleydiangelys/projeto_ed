@@ -34,8 +34,11 @@ background: ${Contentdark ? theme.colors.primaryColor : theme.colors.white};
     justify-content: center;
     text-align: center;
     align-items: center;
-    grid-row: 1;
-    grid-column: 2;
+
+    @media(min-width: 650px){
+      grid-row: 1;
+      grid-column: 2;
+  }
   `;
 
 export const FormContant = styled.div`
