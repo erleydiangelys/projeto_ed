@@ -10,7 +10,10 @@ import { UserDataContext } from '../../database/firebase/UserData';
 function TrampoCard({children, data, Contentdark, isDelete=false}) {
   const { deleteTrampos } = React.useContext(UserDataContext);
   const handleClick = (id) => {
-    deleteTrampos(id)
+    deleteTrampos(id).then(() => {
+      window.location.reload(false);
+    })
+
   }
 
   return (
