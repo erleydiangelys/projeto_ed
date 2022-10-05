@@ -20,7 +20,6 @@ function Perfil({Contentdark}) {
     <Container>
       <ContainerContent Contentdark={Contentdark}>
       <ContentPerfil>
-        {console.log(user)}
         <Name>{user.displayName ? (user.displayName) : (user.email) }</Name>
         <Img src={user.photoURL ? (user.photoURL) : (perfilPhoto)} alt='Photo perfil' />
 

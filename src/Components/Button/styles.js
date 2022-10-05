@@ -1,14 +1,22 @@
 import styled, {css} from 'styled-components';
 
 export const ButtonM = styled.button`
-${({ theme, Contentdark }) => css`
-  background: ${theme.colors.secondaryColor};
+${({ theme, Contentdark, size, radius, isDelete }) => css`
+  background: ${isDelete ? theme.colors.errorColor : theme.colors.secondaryColor};
+  background:
   color: ${Contentdark ? theme.colors.white : theme.colors.primaryColor};
   border: 1px solid ${Contentdark ? theme.colors.white : theme.colors.primaryColor};
+  font-size: ${size}rem;
+  border-radius: ${radius}rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem
   `};
   padding: 0.8rem 1.4rem;
-  border-radius: 20px;
-  font-size: 2rem;
+
+  & a {
+    text-decoration:none;
+  }
 
   &:hover {
   ${({ theme}) => css`

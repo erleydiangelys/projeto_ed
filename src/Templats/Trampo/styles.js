@@ -8,7 +8,12 @@ export const Container = styled.div`
   justify-content: center;
   max-width:1000px;
   padding: 0.5rem;
-  margin: 3rem auto;
+  margin: 0 auto;
+  margin-bottom: 3rem;
+
+  @media(min-width: 650px){
+    margin-top: 3rem;
+  }
 `;
 
 
@@ -30,6 +35,10 @@ background: ${Contentdark ? theme.colors.primaryColor : theme.colors.white};
     justify-content: center;
     text-align: center;
     align-items: center;
+
+    & a {
+    text-decoration:none;
+  }
   `;
 
 
@@ -42,13 +51,6 @@ ${({ theme, Contentdark }) => css`
   margin-bottom: 1.5rem;
 `;
 
-export const ContentDescription = styled.h6`
-${({ theme, Contentdark }) => css`
-${Contentdark ? theme.colors.primaryColor : theme.colors.white};
-  `};
-  text-align: center;
-  margin-bottom: 2rem;
-`;
 
 export const Name = styled.h1`
 ${({ theme }) => css`
@@ -56,9 +58,14 @@ ${({ theme }) => css`
   font-family: ${theme.font.family.titulo};
   `};
   text-align: center;
-  margin-bottom: 1.5rem;
-  margin-top: 6rem;
+  margin-bottom: 0rem;
+  margin-top: 1rem;
   font-size: 4rem;
+
+  @media(min-width: 650px){
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+  }
 
 `;
 
@@ -74,7 +81,7 @@ export const ListCard = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   gap: 2px;
-  margin: 1rem;
+  margin: 1.5rem;
 
 
   @media(min-width: 650px){

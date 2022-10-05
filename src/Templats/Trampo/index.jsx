@@ -19,8 +19,8 @@ function Trampo({Contentdark}) {
 
   React.useEffect(() => {
     const dados = [];
-    const BuscaTrampos = async () => {
-      await getAllTrampos().then((item) => {
+    const BuscaTrampos = () => {
+       getAllTrampos().then((item) => {
         if(item) {
           item.map((dado) => {
             if((dado.userId === user.uid)) {
@@ -32,7 +32,8 @@ function Trampo({Contentdark}) {
       setData(dados)
     }
     BuscaTrampos();
-  }, []);
+    console.log('teste');
+  },[]);
 
 
   return (
@@ -41,13 +42,13 @@ function Trampo({Contentdark}) {
       <ContainerContent Contentdark={Contentdark}>
       <ContentText>
         <Name>Meus Trampos</Name>
-        <Link to="/trampos/novo"><Button Contentdark={Contentdark}>+</Button> </Link>
+        <Link to="/trampos/novo"><Button Contentdark={Contentdark} size={1.5} radius={2}>+</Button> </Link>
       </ContentText>
 
       <ListTrampo>
         <ListCard>
           {data && data.map((item, index) => (
-            <TrampoCard key={index} Contentdark={Contentdark} data={item}>teste</TrampoCard>
+            <TrampoCard key={index} Contentdark={Contentdark} data={item} isDelete={true} />
           ))}
         </ListCard>
       </ListTrampo>

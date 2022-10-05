@@ -11,19 +11,17 @@ import { theme } from './styles/theme';
 
 import { Router } from './routes';
 import Header from './Components/Header/index';
+import Layout from './styles/Layout';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const dark = true;
 root.render(
   <React.StrictMode>
      <BrowserRouter>
       <UserAuth>
         <UserData>
         <ThemeProvider theme={theme}>
-        <Header Contentdark={dark}/>
-            <Router Contentdark={dark}/>
-          <GlobalStyle Contentdark={dark} />
+          <Layout/>
         </ThemeProvider>
         </UserData>
       </UserAuth>

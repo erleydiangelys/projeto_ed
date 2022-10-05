@@ -2,6 +2,7 @@ import styled, { css, keyframes } from 'styled-components';
 
 export const Container = styled.div`
 ${({ theme, Contentdark, menor }) => css`
+background: ${Contentdark ? theme.colors.primaryColor : theme.colors.white};
   top: ${menor ? 'none' : '0px'};
   bottom: ${menor ? '0px' : 'none'};
 `};
@@ -9,9 +10,13 @@ ${({ theme, Contentdark, menor }) => css`
   width: 100%;
   z-index: 100;
   height: 5rem;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
   & > h1 {
     font-size: 2rem;
+  }
+
+  @media(min-width: 650px){
+    grid-template-columns: 1fr 1fr;
   }
 `;
 

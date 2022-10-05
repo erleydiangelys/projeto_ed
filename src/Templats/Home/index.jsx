@@ -10,8 +10,8 @@ import TrampoCard from '../../Components/TrampoCard';
 
 
 
-function Home({Contentdark}) {
-  const { user } = React.useContext(UserContext);
+function Home() {
+  const { user, contentdark, setContentdark } = React.useContext(UserContext);
   const { error, loading, getAllTrampos } = React.useContext(UserDataContext);
   const [data, setData] = React.useState([])
 
@@ -38,7 +38,7 @@ function Home({Contentdark}) {
   return (
 
     <Container>
-      <ContainerContent Contentdark={Contentdark}>
+      <ContainerContent Contentdark={contentdark}>
       <ContentText>
         <Name>Trampos em abertos!</Name>
         {/* <Link to="/trampos/novo"><Button Contentdark={Contentdark}>+</Button> </Link> */}
@@ -47,7 +47,7 @@ function Home({Contentdark}) {
       <ListTrampo>
         <ListCard>
           {data && data.map((item, index) => (
-            <TrampoCard key={index} Contentdark={Contentdark} data={item}>teste</TrampoCard>
+            <TrampoCard key={index} Contentdark={contentdark} data={item}>teste</TrampoCard>
           ))}
         </ListCard>
       </ListTrampo>

@@ -1,5 +1,6 @@
 import { createGlobalStyle, css } from 'styled-components';
 
+
 export const GlobalStyle = createGlobalStyle`
 
 ${({ theme, Contentdark }) => css`

@@ -3,12 +3,18 @@ import styled, { css } from 'styled-components';
 
 
 export const Container = styled.div`
+  margin: 0 auto;
+  margin-top:2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   max-width:1000px;
   padding: 0.5rem;
-  margin: 3rem auto;
+  margin-bottom: 5rem;
+
+  @media(min-width: 650px){
+    margin-top: 3rem;
+  }
 `;
 
 
@@ -51,15 +57,18 @@ ${Contentdark ? theme.colors.primaryColor : theme.colors.white};
 `;
 
 export const Name = styled.h1`
-${({ theme }) => css`
+${({ theme}) => css`
   color: ${theme.colors.secondaryColor};
   font-family: ${theme.font.family.titulo};
-  `};
+`};
   text-align: center;
   margin-bottom: 1.5rem;
-  margin-top: 6rem;
-  font-size: 4rem;
+  margin-top: 0rem;
+  font-size: 3rem;
 
+  @media(min-width: 650px){
+    margin-top: 5rem;
+    font-size: 4rem;  }
 `;
 
 export const ListTrampo = styled.div`

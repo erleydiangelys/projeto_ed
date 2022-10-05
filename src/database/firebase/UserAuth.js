@@ -26,6 +26,7 @@ export const UserAuth = ({ children }) => {
   const [imgName, setImgimgName] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [contentdark, setContentdark] = useState(false);
   const [progressPorcent, setPorgessPorcent] = useState(0);
   const navigate = useNavigate();
 
@@ -259,6 +260,8 @@ export const UserAuth = ({ children }) => {
         getImg,
         setError,
         setUsuario,
+        setContentdark,
+        contentdark,
         usuario,
         error,
         user,

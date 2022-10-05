@@ -15,7 +15,7 @@ function Header({Contentdark}){
   const menor = useMedia('(max-width: 769px)');
 
   return (
-    <Container menor={menor}>
+    <Container menor={menor} Contentdark={Contentdark}>
     {login && <Line Contentdark={Contentdark} />}
      {login &&
      <Content Contentdark={Contentdark}>

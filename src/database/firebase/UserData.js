@@ -53,7 +53,7 @@ export const UserData = ({ children }) => {
 
   const updateTrampos = async (id, userId, nome, descricao, valor, enderco, obs, concluido, bicador ) => {
   const userDoc = doc(db, "trampos", id);
-  const newFields = { nome, descricao, valor, enderco, obs, concluido, bicador };
+  const newFields = { userId, nome, descricao, valor, enderco, obs, concluido, bicador };
   // console.log(id,marca, modelo, ano )
   try {
       await updateDoc(userDoc, newFields);
@@ -66,7 +66,6 @@ export const UserData = ({ children }) => {
  const getAllTrampos = async () => {
   const data = await getDocs(usersCollectionRef)
   .then((data) => data.docs.map((doc) => ({ ...doc.data()})))
-  // console.log(data);
   return data;
 };
 

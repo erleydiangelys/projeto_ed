@@ -19,7 +19,7 @@ export const Router = ({Contentdark}) => {
   return(
         <Routes Contentdark={Contentdark}>
           <Route path="login/" element={ !login ? (<Loginform Contentdark={Contentdark} />) : (<Navigate to="/"/>)} />
-          <Route path="cadastro/" element={login ? (<CadastroForm Contentdark={Contentdark} />) : (<Navigate to="/login"/>)} />
+          <Route path="cadastro/" element={<CadastroForm Contentdark={Contentdark} />} />
           <Route path="perfil/" element={login ? (<Perfil Contentdark={Contentdark} />) : (<Navigate to="/login"/>)} />
           <Route path="trampos/" element={login ? (<Trampo Contentdark={Contentdark} />) : (<Navigate to="/login"/>)} />
           <Route path="trampos/novo" element={login ? (<TrampoNovo Contentdark={Contentdark} />) : (<Navigate to="/login"/>)} />
