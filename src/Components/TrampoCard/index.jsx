@@ -4,10 +4,13 @@ import { Trash } from '@styled-icons/heroicons-outline/Trash'
 import { PlayArrow } from '@styled-icons/material-twotone/PlayArrow'
 import { Container, CardContent, Title, Content, Dados, Img, ContentButton, Itens } from './styles';
 import Button from '../../Components/Button'
-function TrampoCard({children, data, Contentdark, isDelete=false}) {
 
-  function handleClick(e){
-    console.log(e)
+import { UserDataContext } from '../../database/firebase/UserData';
+
+function TrampoCard({children, data, Contentdark, isDelete=false}) {
+  const { deleteTrampos } = React.useContext(UserDataContext);
+  const handleClick = (id) => {
+    deleteTrampos(id)
   }
 
   return (
@@ -28,7 +31,7 @@ function TrampoCard({children, data, Contentdark, isDelete=false}) {
             { isDelete ?
             (
               <>
-            <Button onClick={() => handleClick()} Contentdark={Contentdark} size={1.5} radius={1.4} isDelete={isDelete}>Deletar<Trash size={14}/></Button>
+            <Button onClick={() => handleClick(data.id)} Contentdark={Contentdark} size={1.5} radius={1.4} isDelete={isDelete}>Deletar<Trash size={14}/></Button>
             {!data.concluido && <Button Contentdark={Contentdark} size={1.5} radius={1.4}>Conluir<Trash size={14}/></Button>}
               </>
             )

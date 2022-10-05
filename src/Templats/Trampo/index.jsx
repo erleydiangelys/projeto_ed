@@ -8,6 +8,9 @@ import { Container, ContainerContent, ContentText, Name, ListTrampo, ListCard} f
 import Button from '../../Components/Button';
 import TrampoCard from '../../Components/TrampoCard';
 
+function handleClick(e){
+  console.log('teste');
+}
 
 
 function Trampo({Contentdark}) {
@@ -23,6 +26,7 @@ function Trampo({Contentdark}) {
         await getAllTrampos()
     }
     BuscaTrampos();
+    console.log('test');
   }, []);
 
 

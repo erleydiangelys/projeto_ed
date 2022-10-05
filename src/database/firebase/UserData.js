@@ -95,6 +95,7 @@ export const UserData = ({ children }) => {
   return (
     <UserDataContext.Provider
       value={{
+        deleteTrampos,
         createTrampos,
         getAllTrampos,
         data,
