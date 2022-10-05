@@ -31,9 +31,8 @@ export const UserAuth = ({ children }) => {
   const navigate = useNavigate();
 
 
-  const storageRef  = ref(storage, 'userImg');
 
-  React.useLayoutEffect(() => {
+  React.useEffect(() => {
     function autoLogin() {
       const token = JSON.parse(window.localStorage.getItem('user'));
       // console.log(login)

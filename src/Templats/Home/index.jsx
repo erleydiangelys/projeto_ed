@@ -12,24 +12,14 @@ import TrampoCard from '../../Components/TrampoCard';
 
 function Home() {
   const { user, contentdark, setContentdark } = React.useContext(UserContext);
-  const { error, loading, getAllTrampos } = React.useContext(UserDataContext);
-  const [data, setData] = React.useState([])
+  const { error, loading, getAllTrampos,data } = React.useContext(UserDataContext);
+  // const [data, setData] = React.useState([])
 
   const menor = useMedia('(max-width: 769px)');
 
   React.useEffect(() => {
-    const dados = [];
     const BuscaTrampos = async () => {
-      await getAllTrampos().then((item) => {
-        if(item) {
-          item.map((dado) => {
-            if(!dado.concluido) {
-              dados.push(dado);
-            }
-        })
-        }
-      })
-      setData(dados)
+        await getAllTrampos()
     }
     BuscaTrampos();
   }, []);

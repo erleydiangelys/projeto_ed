@@ -13,27 +13,17 @@ import TrampoCard from '../../Components/TrampoCard';
 function Trampo({Contentdark}) {
   const { user } = React.useContext(UserContext);
   const [usuario, setUsuario] = React.useState(JSON.parse(window.localStorage.getItem('user')))
-  const { error, loading, getAllTrampos } = React.useContext(UserDataContext);
-  const [data, setData] = React.useState([])
+  const { error, loading, getAllTrampos, data } = React.useContext(UserDataContext);
+  // const [data, setData] = React.useState([])
 
   const menor = useMedia('(max-width: 769px)');
 
   React.useEffect(() => {
-    const dados = [];
     const BuscaTrampos = async () => {
-       await getAllTrampos().then((item) => {
-        if((item) && (usuario)) {
-          item.map((dado) => {
-            if((dado.userId === usuario.uid)) {
-              dados.push(dado);
-            }
-        })
-      }
-    })
-    setData(dados)
+        await getAllTrampos()
     }
     BuscaTrampos();
-  },[]);
+  }, []);
 
 
   return (
@@ -44,7 +34,6 @@ function Trampo({Contentdark}) {
         <Name>Meus Trampos</Name>
         <Link to="/trampos/novo"><Button Contentdark={Contentdark} size={1.5} radius={2}>+</Button> </Link>
       </ContentText>
-
       <ListTrampo>
         <ListCard>
           {data && data.map((item, index) => (
