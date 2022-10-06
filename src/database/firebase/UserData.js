@@ -168,7 +168,7 @@ export const UserData = ({ children }) => {
   .then((data) => {
     let trampos = []
     data.forEach((doc) => {
-      if((!doc.data().concluido) && (!doc.data().bicador)) {
+      if((!doc.data().concluido)) {
         trampos.push({
           id: doc.id,
           userId: doc.data().userId,
@@ -202,7 +202,7 @@ export const UserData = ({ children }) => {
 const createIntencao = async (nome, contato, idTrampo, IdUsuario, idLancador ) => {
   setLoading(true)
   try{
-    // console.log(userId, nome, descricao, valor, enderco, obs);
+    console.log(nome, contato, idTrampo, IdUsuario, idLancador);
       await addDoc(IntecCollectionRef, { nome, contato, idTrampo, IdUsuario, idLancador }).then((item)=> {
         AlterIntencao(idTrampo,item.id)
       })

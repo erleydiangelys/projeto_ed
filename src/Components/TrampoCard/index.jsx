@@ -77,7 +77,6 @@ function TrampoCard({children, data, Contentdark, isDelete=false}) {
           <IntencContainer >
                 {/* <TitleInc>Interessado pelo serviço {}</TitleInc> */}
           {dataIntec.length > 0 && dataIntec.map((item, index) => {
-
             if(item.idTrampo === data.id)
             return (
               <div key={index}>

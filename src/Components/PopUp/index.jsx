@@ -23,11 +23,11 @@ function PopUp({id, userId, oferId, Contentdark}) {
     resolver: yupResolver(Validation)
   });
 
-  const handleBicar = (id) => {
-    bicar(id).then(() => {
-      window.location.reload(false);
-    })
-  }
+  // const handleBicar = (id) => {
+  //   bicar(id).then(() => {
+  //     window.location.reload(false);
+  //   })
+  // }
 
 
   const handleLogin = async (e) => {
@@ -36,8 +36,10 @@ function PopUp({id, userId, oferId, Contentdark}) {
     const idTrampo = id
     const IdUsuario = userId
     const idLancador = oferId
-    createIntencao(nome, contato, idTrampo, IdUsuario, idLancador );
-      handleBicar(idTrampo);
+    createIntencao(nome, contato, idTrampo, IdUsuario, idLancador ).then(() => {
+      window.location.reload(false);
+    })
+      // handleBicar(idTrampo);
   }
   return (
   <Popup trigger={<Button className="Button"> Quero fazer </Button>} modal>
