@@ -97,6 +97,30 @@ export const IntencContainer = styled.div`
 
 `;
 
+export const ButtonInc = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  max-height: 2.5rem;
+  border-radius: 10px;
+  border: none;
+  margin-top: 1rem;
+  font-size: 1rem;
+`;
+
+export const IntenContent = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const IncCard = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 2rem;
+`;
+
 export const ContentInc = styled.div`
   padding: 0 2rem;
 

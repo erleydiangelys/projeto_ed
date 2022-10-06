@@ -238,6 +238,11 @@ const getAllIntencaoCard = async (id) => {
 }
 
 
+const deleteIntencao = async (id) => {
+  const userDoc = doc(db, "intencao", id);
+  await deleteDoc(userDoc);
+};
+
   return (
     <UserDataContext.Provider
       value={{
@@ -250,6 +255,7 @@ const getAllIntencaoCard = async (id) => {
         createIntencao,
         AlterIntencao,
         getAllIntencaoCard,
+        deleteIntencao,
         dataIntec,
         data,
         error,
