@@ -12,14 +12,14 @@ import TrampoCard from '../../Components/TrampoCard';
 
 function Home() {
   const { user, contentdark, setContentdark } = React.useContext(UserContext);
-  const { error, loading, getAllTrampos,data } = React.useContext(UserDataContext);
+  const { error, loading, getAllTrampos,data, getAllTramposHome } = React.useContext(UserDataContext);
   // const [data, setData] = React.useState([])
 
   const menor = useMedia('(max-width: 769px)');
 
   React.useEffect(() => {
     const BuscaTrampos = async () => {
-        await getAllTrampos()
+        await getAllTramposHome()
     }
     BuscaTrampos();
   }, []);
@@ -37,7 +37,7 @@ function Home() {
       <ListTrampo>
         <ListCard>
           {data && data.map((item, index) => (
-            <TrampoCard key={index} Contentdark={contentdark} data={item}>teste</TrampoCard>
+            <TrampoCard key={index} Contentdark={contentdark} data={item}/>
           ))}
         </ListCard>
       </ListTrampo>
