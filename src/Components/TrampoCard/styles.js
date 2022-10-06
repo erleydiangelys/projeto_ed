@@ -9,10 +9,11 @@ margin: 1rem;
 
 export const CardContent = styled.div`
   text-align: center;
+
 `;
 
 export const Title = styled.div`
-  font-size: 2rem;
+  font-size: 1.5rem;
   padding: 1.8rem;
   border-radius: 15px 15px 0 0;
   ${({ theme, Contentdark }) => css`
@@ -107,6 +108,14 @@ export const ButtonInc = styled.button`
   border: none;
   margin-top: 1rem;
   font-size: 1rem;
+  cursor: pointer;
+
+  &:hover {
+    ${({ theme, Contentdark}) => css`
+    background: ${theme.colors.errorColor};
+    color: ${theme.colors.white};
+  `};
+  }
 `;
 
 export const IntenContent = styled.div`

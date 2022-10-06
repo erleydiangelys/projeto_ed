@@ -13,16 +13,17 @@ ${({ theme, Contentdark, size, radius, isDelete }) => css`
   gap: 0.5rem
   `};
   padding: 0.8rem 1.4rem;
+  cursor: pointer;
 
   & a {
     text-decoration:none;
   }
 
   &:hover {
-  ${({ theme}) => css`
-  background: ${theme.colors.secondaryColorHover};
-  color: ${theme.colors.secondaryColor};
-  border-color: ${theme.colors.secondaryColor};
+  ${({ theme, isDelete}) => css`
+  background: ${isDelete ? theme.colors.grayDark : theme.colors.secondaryColor};
+  color: ${theme.colors.white};
+  border-color: ${theme.colors.grayDark};
   box-shadow: 0 0 0 1px ${theme.colors.secondaryColor};
   transform: scale(1.005);
   `};

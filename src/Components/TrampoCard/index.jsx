@@ -1,6 +1,7 @@
 import React from 'react';
 import ImgAux from '../../Assets/png/perfil.png';
 import { Trash } from '@styled-icons/heroicons-outline/Trash'
+import { RemoveCircle } from '@styled-icons/ionicons-outline/RemoveCircle'
 // import { PlayArrow } from '@styled-icons/material-twotone/PlayArrow'
 import { CheckmarkCircle } from '@styled-icons/evaicons-solid/CheckmarkCircle'
 
@@ -93,7 +94,7 @@ function TrampoCard({children, data, Contentdark, isDelete=false}) {
                   <p><span>Nome: </span>{item.nome}</p>
                   <p><span>Contato: </span>{item.contato}</p>
                   </ContentInc>
-                <ButtonInc onClick={() => deleteInc(item.id)}>Deletar<Trash size={10}/></ButtonInc>
+                <ButtonInc onClick={() => deleteInc(item.id)}>remover<RemoveCircle size={10}/></ButtonInc>
                 </IncCard>
               </IntenContent>
             )

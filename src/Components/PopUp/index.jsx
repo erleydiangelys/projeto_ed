@@ -5,6 +5,8 @@ import {useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
+import './index.css';
+
 import { UserDataContext } from '../../database/firebase/UserData';
 import { UserContext } from '../../database/firebase/UserAuth';
 
@@ -41,11 +43,13 @@ function PopUp({id, userId, oferId, Contentdark}) {
     })
       // handleBicar(idTrampo);
   }
+
   return (
   <Popup trigger={<Button className="Button"> Quero fazer </Button>} modal>
     <Container>
       <Container>
         <Title>deixe seu contato</Title>
+
         <FormContant>
           <Form onSubmit={handleSubmit(handleLogin)} Contentdark={Contentdark}>
             <ItemForm>
@@ -56,7 +60,7 @@ function PopUp({id, userId, oferId, Contentdark}) {
 
             <ItemForm >
               {/* <Label Contentdark={Contentdark} >senha</Label> */}
-              <Input Contentdark={Contentdark} placeholder="whatsapp ou rede social para contato" type='contato' name='contato' {...register('contato')} />
+              <Input Contentdark={Contentdark} placeholder="whatsapp, telefone ou rede social para contato" type='contato' name='contato' {...register('contato')} />
               <Erro>{errors.contato?.message}</Erro>
             </ItemForm>
 
