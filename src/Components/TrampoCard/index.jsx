@@ -4,7 +4,7 @@ import { Trash } from '@styled-icons/heroicons-outline/Trash'
 // import { PlayArrow } from '@styled-icons/material-twotone/PlayArrow'
 import { CheckmarkCircle } from '@styled-icons/evaicons-solid/CheckmarkCircle'
 
-import { Container, CardContent, Title, Content, Dados, Img, ContentButton, Itens } from './styles';
+import { Container, CardContent, Title, Content, Dados, Img, ContentButton, Itens, IntencContainer, TitleInc, ContentInc } from './styles';
 import Button from '../../Components/Button'
 
 import { UserDataContext } from '../../database/firebase/UserData';
@@ -12,8 +12,17 @@ import { UserContext } from '../../database/firebase/UserAuth';
 import PopUp from '../PopUp';
 
 function TrampoCard({children, data, Contentdark, isDelete=false}) {
-  const { deleteTrampos, concluir, bicar } = React.useContext(UserDataContext);
+  const { deleteTrampos, concluir, dataIntec, getAllIntencaoCard } = React.useContext(UserDataContext);
   const { user } = React.useContext(UserContext);
+  const [contInteressados, setcontInteressados] = React.useState(0)
+
+
+  React.useEffect(() => {
+    const BuscaTrampos =  () => {
+         getAllIntencaoCard(data.id)
+    }
+    BuscaTrampos();
+  }, []);
 
   const handleClick = (id) => {
     deleteTrampos(id).then(() => {
@@ -63,6 +72,28 @@ function TrampoCard({children, data, Contentdark, isDelete=false}) {
           }
 
           </ContentButton>
+          {isDelete &&
+          (
+          <IntencContainer >
+                {/* <TitleInc>Interessado pelo serviço {}</TitleInc> */}
+          {dataIntec.length > 0 && dataIntec.map((item, index) => {
+
+            if(item.idTrampo === data.id)
+            return (
+              <div key={index}>
+
+                <TitleInc>Interessado pelo serviço:</TitleInc>
+                  <ContentInc>
+                  <p><span>Nome: </span>{item.nome}</p>
+                  <p><span>Contato: </span>{item.contato}</p>
+                  </ContentInc>
+              </div>
+            )
+              })
+              }
+              </IntencContainer>
+          ) }
+
         </Content>
       </CardContent>
     </Container>

@@ -24,6 +24,7 @@ export const UserData = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [data, setData] = useState([]);
+  const [dataIntec, setDataIntec] = useState([]);
   const [concluido, setConcluido] = useState(false);
 
 
@@ -217,6 +218,26 @@ const createIntencao = async (nome, contato, idTrampo, IdUsuario, idLancador ) =
   }
 };
 
+
+const getAllIntencaoCard = async (id) => {
+  await getDocs(IntecCollectionRef)
+  .then((data) => {
+    let trampos = []
+    data.forEach((doc) => {
+        trampos.push({
+          id: doc.id,
+          nome: doc.data().nome,
+          contato: doc.data().contato,
+          idTrampo: doc.data().idTrampo,
+          IdUsuario: doc.data().IdUsuario,
+          idLancador: doc.data().idLancador,
+        })
+  })
+  setDataIntec(trampos);
+})
+}
+
+
   return (
     <UserDataContext.Provider
       value={{
@@ -228,6 +249,8 @@ const createIntencao = async (nome, contato, idTrampo, IdUsuario, idLancador ) =
         bicar,
         createIntencao,
         AlterIntencao,
+        getAllIntencaoCard,
+        dataIntec,
         data,
         error,
         loading,

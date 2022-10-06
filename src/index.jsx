@@ -16,7 +16,6 @@ import Layout from './styles/Layout';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
      <BrowserRouter>
       <UserAuth>
         <UserData>
@@ -26,5 +25,4 @@ root.render(
         </UserData>
       </UserAuth>
      </BrowserRouter>
-  </React.StrictMode>
 );

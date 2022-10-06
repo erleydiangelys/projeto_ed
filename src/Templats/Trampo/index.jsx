@@ -26,7 +26,6 @@ function Trampo({Contentdark}) {
         await getAllTrampos()
     }
     BuscaTrampos();
-    console.log('test');
   }, []);
 
 

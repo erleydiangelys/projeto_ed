@@ -91,3 +91,32 @@ export const Itens = styled.div`
     min-height: 6.5rem;
   }
 `;
+
+
+export const IntencContainer = styled.div`
+
+`;
+
+export const ContentInc = styled.div`
+  padding: 0 2rem;
+
+  & > p {
+    font-size: 1.4rem;
+
+    & > span {
+      font-size: 1.45rem;
+      font-weight: bold;
+    }
+  }
+`;
+
+export const TitleInc = styled.h5`
+  margin-top: 1rem;
+  text-align: center;
+  padding: 0.5rem;
+  ${({ theme, Contentdark }) => css`
+  background ${theme.colors.secondaryColorHover};
+  color: ${theme.colors.primaryColor};
+  font-family: ${({ theme }) => theme.font.family.secundary};
+  `};
+`;
