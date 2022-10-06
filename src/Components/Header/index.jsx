@@ -27,14 +27,14 @@ function Header({Contentdark}){
       {menor ? (
         <MenuMobile menor={menor}>
             <div><Link to="/trampos"><HappyBeaming />Trampos</Link></div>
-            <div><Link to="/servicos"><PaintRoll />Serviços</Link></div>
+            {/* <div><Link to="/servicos"><PaintRoll />Serviços</Link></div> */}
             <div><Link to="/perfil"><UserCircle />perfil</Link></div>
             <div onClick={() => LogoutUser()}><LogoutCircle/> sair</div>
         </MenuMobile>
         ) : (
         <Menu>
           <div><Link to="/trampos">Meus Trampos<HappyBeaming /></Link></div>
-          <div><Link to="/servicos">Meus Serviços <PaintRoll /></Link></div>
+          {/* <div><Link to="/servicos">Meus Serviços <PaintRoll /></Link></div> */}
           <div><Link to="/perfil">perfil <UserCircle /></Link></div>
           <div onClick={() => LogoutUser()}>sair <LogoutCircle/> </div>
         </Menu>
