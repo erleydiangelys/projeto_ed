@@ -139,11 +139,12 @@ export const UserData = ({ children }) => {
 }
 
  const getAllTramposHome = async () => {  //depois deve ser adicionada uma condição para não exibir os proprios trampos
+  const user = JSON.parse(window.localStorage.getItem('user'))
   await getDocs(usersCollectionRef)
   .then((data) => {
     let trampos = []
     data.forEach((doc) => {
-      if((!doc.data().concluido)) {
+      if((!doc.data().concluido) && (doc.data().userId !== user.uid)) {
         trampos.push({
           id: doc.id,
           userId: doc.data().userId,
@@ -168,6 +169,7 @@ export const UserData = ({ children }) => {
     let trampos = []
     data.forEach((doc) => {
       if((doc.data().userId === id)) {
+
         trampos.push({
           id: doc.id,
           userId: doc.data().userId,

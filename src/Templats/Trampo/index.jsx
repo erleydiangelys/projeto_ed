@@ -16,14 +16,14 @@ function handleClick(e){
 function Trampo({Contentdark}) {
   const { user } = React.useContext(UserContext);
   const [usuario, setUsuario] = React.useState(JSON.parse(window.localStorage.getItem('user')))
-  const { error, loading, getAllTrampos, data } = React.useContext(UserDataContext);
+  const { error, loading, getAllTramposUser, data } = React.useContext(UserDataContext);
   // const [data, setData] = React.useState([])
 
   const menor = useMedia('(max-width: 769px)');
 
   React.useEffect(() => {
     const BuscaTrampos = async () => {
-        await getAllTrampos()
+        await getAllTramposUser(usuario.uid)
     }
     BuscaTrampos();
   }, []);
