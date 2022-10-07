@@ -53,6 +53,36 @@ ${({ theme }) => css`
 `;
 
 
+export const Info = styled.div`
+  display: flex;
+${({ theme, Contentdark }) => css`
+  color: ${theme.colors.secondaryColor};
+  border: 1px solid ${theme.colors.secondaryColor};
+  margin-top: 2rem;
+  border-radius: 0 0 15px 15px;
+  & > a {
+    text-decoration: none;
+    color: currentColor;
+  }
+`};
 
+`;
+
+export const ItemInfo = styled.div`
+
+  & > h4 {
+    ${({ theme }) => css`
+    font-size: 2rem;
+    color: ${theme.colors.white};
+    background: ${theme.colors.secondaryColor};
+    padding: 0.5rem;
+  `};
+  }
+  & > h5 {
+    font-size: 2rem;
+    padding: 0.5rem;
+  }
+
+`;
 
 

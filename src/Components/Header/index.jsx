@@ -2,10 +2,12 @@ import React from 'react'
 import { UserContext } from '../../database/firebase/UserAuth';
 import useMedia from '../../Hooks/useMedia';
 import { Link } from "react-router-dom";
+
 import { LogoutCircle } from '@styled-icons/remix-line/LogoutCircle'
 import { UserCircle } from '@styled-icons/boxicons-regular/UserCircle'
 import { PaintRoll } from '@styled-icons/boxicons-regular/PaintRoll'
 import { HappyBeaming } from '@styled-icons/boxicons-regular/HappyBeaming'
+import { ReactComponent as LogoImg } from '../../Assets/logo.svg';
 
 
 import { Container, Content, Logo, MenuContent, MenuMobile, Menu, Line } from './styles'
@@ -20,8 +22,7 @@ function Header({Contentdark}){
      {login &&
      <Content Contentdark={Contentdark}>
       <Logo Contentdark={Contentdark}>
-      <Link to="/"> <h5>Logo</h5> </Link>
-
+      <Link to="/"> <LogoImg/><p>Zé do bico</p></Link>
       </Logo >
       <MenuContent>
       {menor ? (

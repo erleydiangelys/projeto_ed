@@ -69,7 +69,7 @@ export const UserAuth = ({ children }) => {
           setUser(NewUser)
           setLogin(true)
           setLoading(false)
-          navigate('/');
+          navigate('/')
           return NewUser;
       }).catch(e => {
           setError('erro ao realizar cadastro tente novamente!')

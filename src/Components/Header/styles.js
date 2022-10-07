@@ -39,9 +39,23 @@ export const Logo = styled.div`
 ${({ theme, Contentdark }) => css`
   color: ${Contentdark ? theme.colors.white : theme.colors.primaryColor};
 
+  &  svg {
+    width: 4rem;
+    color: ${Contentdark ? theme.colors.white : theme.colors.primaryColor};
+
+    & path {
+      fill: ${Contentdark ? theme.colors.white : theme.colors.primaryColor};
+    }
+  }
   & > a {
     color: ${Contentdark ? theme.colors.white : theme.colors.primaryColor};
     text-decoration: none;
+    display: flex;
+    gap: 0.5rem;
+    font-size: 1.4rem;
+    flex-direction: row;
+    align-items: center;
+    font-family: ${theme.font.family.titulo};
   }
 `};
 `;

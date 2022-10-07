@@ -1,4 +1,5 @@
 import React from 'react';
+
 import ImgAux from '../../Assets/png/perfil.png';
 import { Trash } from '@styled-icons/heroicons-outline/Trash'
 import { RemoveCircle } from '@styled-icons/ionicons-outline/RemoveCircle'
@@ -41,7 +42,7 @@ function TrampoCard({children, data, Contentdark, isDelete=false}) {
 
   const deleteInc = (id) => {
     deleteIntencao(id).then(() => {
-      window.location.reload(false);
+      getAllIntencaoCard(data.id)
     })
   }
 

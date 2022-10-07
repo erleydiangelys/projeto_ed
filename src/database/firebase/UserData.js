@@ -115,31 +115,6 @@ export const UserData = ({ children }) => {
   }
 
 };
-  const AlterIntencao = async (id, intID) => {
-  const userDoc = doc(db, "trampos", id);
-  const trampo = await getDoc(doc(db, "trampos", id))
-  const user = JSON.parse(window.localStorage.getItem('user'))
-  // console.log(user)
-  const newFields = {
-    userId: trampo.data().userId,
-     nome: trampo.data().nome,
-     descricao: trampo.data().descricao,
-     valor: trampo.data().valor,
-     enderco: trampo.data().enderco,
-     obs: trampo.data().obs,
-     concluido: trampo.data().concluido,
-     bicador: trampo.data().bicador,
-     intecao: intID,
-    };
-  try {
-    if(trampo){
-      await updateDoc(userDoc, newFields);
-    }
-  } catch(err){
-      console.log(err);
-  }
-};
-
 
  const getAllTrampos = async () => {
   await getDocs(usersCollectionRef)
@@ -169,6 +144,30 @@ export const UserData = ({ children }) => {
     let trampos = []
     data.forEach((doc) => {
       if((!doc.data().concluido)) {
+        trampos.push({
+          id: doc.id,
+          userId: doc.data().userId,
+          nome: doc.data().nome,
+          descricao: doc.data().descricao,
+          valor: doc.data().valor,
+          enderco: doc.data().enderco,
+          obs: doc.data().obs,
+          concluido: doc.data().concluido,
+          bicador: doc.data().bicador,
+          intecao: doc.data().intecao,
+        })
+      }
+  })
+  setData(trampos);
+})
+}
+
+ const getAllTramposUser = async (id) => {  //depois deve ser adicionada uma condição para não exibir os proprios trampos
+  await getDocs(usersCollectionRef)
+  .then((data) => {
+    let trampos = []
+    data.forEach((doc) => {
+      if((doc.data().userId === id)) {
         trampos.push({
           id: doc.id,
           userId: doc.data().userId,
@@ -218,6 +217,32 @@ const createIntencao = async (nome, contato, idTrampo, IdUsuario, idLancador ) =
   }
 };
 
+const AlterIntencao = async (id, intID) => {
+  const userDoc = doc(db, "trampos", id);
+  const trampo = await getDoc(doc(db, "trampos", id))
+  const user = JSON.parse(window.localStorage.getItem('user'))
+  // console.log(user)
+  const newFields = {
+    userId: trampo.data().userId,
+     nome: trampo.data().nome,
+     descricao: trampo.data().descricao,
+     valor: trampo.data().valor,
+     enderco: trampo.data().enderco,
+     obs: trampo.data().obs,
+     concluido: trampo.data().concluido,
+     bicador: trampo.data().bicador,
+     intecao: intID,
+    };
+  try {
+    if(trampo){
+      await updateDoc(userDoc, newFields);
+    }
+  } catch(err){
+      console.log(err);
+  }
+};
+
+
 
 const getAllIntencaoCard = async (id) => {
   await getDocs(IntecCollectionRef)
@@ -256,6 +281,7 @@ const deleteIntencao = async (id) => {
         AlterIntencao,
         getAllIntencaoCard,
         deleteIntencao,
+        getAllTramposUser,
         dataIntec,
         data,
         error,

@@ -69,6 +69,14 @@ export const Button = styled.button`
     padding: 0.7rem 1rem;
     border-radius: 5px;
     border: 1px solid ${theme.colors.secondaryColor};
+    cursor: pointer;
+
+    &:hover {
+  ${({ theme}) => css`
+    background: ${theme.colors.secondaryColorHover};
+
+  `};
+    }
   `};
 `;
 
@@ -80,4 +88,15 @@ export const ContentDescription = styled.p``;
 
 
 export const Loading = styled.div``;
+
+
+export const Enviando = styled.div`
+${({ theme}) => css`
+    color: ${theme.colors.secondaryColor};
+  `};
+  text-align: center;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+
+`;
 

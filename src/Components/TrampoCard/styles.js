@@ -35,7 +35,7 @@ export const Content = styled.div`
   font-size: 1.5rem;
   border-radius: 0 0 15px 15px;
   text-align: start;
-  padding: 1rem;
+  padding: 2rem;
   ${({ theme, Contentdark }) => css`
   background ${Contentdark ? theme.colors.grayDark : theme.colors.grayMid};
   color: ${Contentdark ? theme.colors.white : theme.colors.primaryColor};

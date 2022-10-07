@@ -1,4 +1,6 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import {useForm } from 'react-hook-form';
@@ -10,7 +12,7 @@ import './index.css';
 import { UserDataContext } from '../../database/firebase/UserData';
 import { UserContext } from '../../database/firebase/UserAuth';
 
-import { Container,Title, FormContant, Form, ItemForm, Input, Erro, Button, Loading } from './styles';
+import { Container,Title, FormContant, Form, ItemForm, Input, Erro, Button, Loading, Enviando } from './styles';
 
 const Validation = yup.object().shape({
   nome: yup.string().required("um nome ou apelido é obrigatorio"),
@@ -18,28 +20,24 @@ const Validation = yup.object().shape({
 })
 
 function PopUp({id, userId, oferId, Contentdark}) {
-  const { bicar, createIntencao, AlterIntencao } = React.useContext(UserDataContext);
-  const {error, loading } = React.useContext(UserContext);
+  const { bicar, createIntencao, AlterIntencao, loading } = React.useContext(UserDataContext);
+  const {error } = React.useContext(UserContext);
+  const navigate = useNavigate();
 
   const { register, handleSubmit, formState:{errors}} = useForm({
     resolver: yupResolver(Validation)
   });
 
-  // const handleBicar = (id) => {
-  //   bicar(id).then(() => {
-  //     window.location.reload(false);
-  //   })
-  // }
 
 
-  const handleLogin = async (e) => {
+  const handleIntenc = async (e) => {
     const nome = e.nome
     const contato = e.contato
     const idTrampo = id
     const IdUsuario = userId
     const idLancador = oferId
     createIntencao(nome, contato, idTrampo, IdUsuario, idLancador ).then(() => {
-      window.location.reload(false);
+      navigate('/');
     })
       // handleBicar(idTrampo);
   }
@@ -50,8 +48,9 @@ function PopUp({id, userId, oferId, Contentdark}) {
       <Container>
         <Title>deixe seu contato</Title>
 
+        {!loading ? (
         <FormContant>
-          <Form onSubmit={handleSubmit(handleLogin)} Contentdark={Contentdark}>
+          <Form onSubmit={handleSubmit(handleIntenc)} Contentdark={Contentdark}>
             <ItemForm>
               {/* <Label Contentdark={Contentdark} >username</Label> */}
               <Input Contentdark={Contentdark} placeholder="Como gostaria de ser chamado?" type='text' name='nome' {...register('nome')} />
@@ -72,7 +71,11 @@ function PopUp({id, userId, oferId, Contentdark}) {
 
           {error && <Erro><p>{error}</p></Erro>}
 
-        </FormContant>
+        </FormContant>) :
+        (
+          <Enviando>enviando, aguarde...</Enviando>
+        )
+      }
       </Container>
     </Container>
   </Popup>
