@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ImgAux from '../../Assets/png/perfil.png';
+import ImgAux1 from '../../Assets/png/temp.png';
 import { Trash } from '@styled-icons/heroicons-outline/Trash'
 import { RemoveCircle } from '@styled-icons/ionicons-outline/RemoveCircle'
 // import { PlayArrow } from '@styled-icons/material-twotone/PlayArrow'
@@ -65,7 +65,7 @@ function TrampoCard({children, data, Contentdark, isDelete=false}) {
           <Itens Contentdark={Contentdark}><span>Observação:</span><p>{data.obs ? (data.obs) : ('Sem mais informações')}</p></Itens>
           { isDelete && <Itens Contentdark={Contentdark}><span>status:</span><p>{data.concluido ? ('Concluido') : ('Aguardando execução')}</p></Itens>}
           </Dados>
-          <Img src={ImgAux}></Img>
+          <Img src={ImgAux1}></Img>
 
           <ContentButton>
             { isDelete ?
